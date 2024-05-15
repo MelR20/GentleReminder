@@ -1,10 +1,15 @@
-import {Button, Text, View} from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
 import {HomeScreenNavigationProp} from '../main/navigation/Navigator';
+import colors from '../main/styles/colors';
+import Title from '../main/component/Title';
+import spacing from '../main/styles/spacing';
 
 export default function Home({navigation}: HomeScreenNavigationProp) {
   return (
-    <View>
-      <Text>HomeScreen</Text>
+    <View style={styles.container}>
+      <View style={styles.titleContainer}>
+        <Title label='Gentle Reminder'/>
+      </View>
       <Button
         title="go to list"
         onPress={() => {
@@ -14,3 +19,18 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
     </View>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    backgroundColor: colors.background,
+    paddingLeft:16,
+    paddingRight: 16,
+    alignItems:'center'
+  },
+  titleContainer:{
+    margin: spacing.md,
+    justifyContent: 'center'
+  }
+})
