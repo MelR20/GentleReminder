@@ -5,11 +5,12 @@ import {
 import HomeScreen from '../../Screens/HomeScreen';
 import ListScreen from '../../Screens/ListScreen';
 import colors from '../styles/colors';
-import {Text, View} from 'react-native';
+import AddListScreen from '../../Screens/AddListScreen';
 
 type RootStackParamList = {
   Home: undefined;
   List: undefined;
+  AddList: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -26,6 +27,7 @@ export default function Navigator() {
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="List" component={ListScreen} />
+      <Stack.Screen name="AddList" component={AddListScreen} />
     </Stack.Navigator>
   );
 }
@@ -37,4 +39,8 @@ export type HomeScreenNavigationProp = NativeStackScreenProps<
 export type ListScreenNavigationProp = NativeStackScreenProps<
   RootStackParamList,
   'List'
+>;
+export type AddListScreenNavigationProp = NativeStackScreenProps<
+  RootStackParamList,
+  'AddList'
 >;
