@@ -18,7 +18,7 @@ export default function Navigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitle: '',
+        headerTitle: 'Gentle Reminder',
         headerTransparent: true,
         headerBackTitle: 'Back',
         headerTintColor: colors.main,

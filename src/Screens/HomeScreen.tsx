@@ -25,12 +25,13 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     backgroundColor: colors.background,
-    paddingLeft:16,
-    paddingRight: 16,
+    paddingLeft:spacing.md,
+    paddingRight: spacing.md,
     alignItems:'center'
   },
   titleContainer:{
     margin: spacing.md,
+    paddingTop: spacing.xl,
     justifyContent: 'center'
   }
 })
