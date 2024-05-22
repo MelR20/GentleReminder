@@ -1,5 +1,6 @@
 import {
   createNativeStackNavigator,
+  NativeStackNavigationProp,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import HomeScreen from '../../Screens/HomeScreen';
@@ -7,10 +8,11 @@ import ListScreen from '../../Screens/ListScreen';
 import colors from '../styles/colors';
 import AddListScreen from '../../Screens/AddListScreen';
 import AddButton from '../component/AddButton';
+import ExpandableMenu from '../component/ExpandableMenu';
 
 type RootStackParamList = {
   Home: undefined;
-  List: undefined;
+  List: {id: string};
   AddList: undefined;
 };
 
@@ -20,20 +22,26 @@ export default function Navigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitle: 'Gentle Reminder',
+        headerTitle: '',
         headerTransparent: true,
         headerBackTitle: 'Back',
         headerTintColor: colors.main,
         //headerBackTitleStyle: fontFamily,
       }}>
-      <Stack.Screen name="Home" component={HomeScreen} options={({navigation})=>({headerRight: ()=>(<AddButton onPress={() => {
-          navigation.navigate('AddList');
-        }}/>)})}/>
+      <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={() => ({headerRight: () => <ExpandableMenu />})}
+      />
       <Stack.Screen name="List" component={ListScreen} />
       <Stack.Screen name="AddList" component={AddListScreen} />
     </Stack.Navigator>
   );
 }
+export type RootStackNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  any
+>;
 
 export type HomeScreenNavigationProp = NativeStackScreenProps<
   RootStackParamList,

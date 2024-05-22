@@ -1,9 +1,12 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
-import {HomeScreenNavigationProp} from '../main/navigation/Navigator';
+import {
+  HomeScreenNavigationProp,
+  RootStackNavigationProp,
+} from '../main/navigation/Navigator';
 import colors from '../main/styles/colors';
 import Title from '../main/component/Title';
 import spacing from '../main/styles/spacing';
-import AddButton from '../main/component/AddButton';
+import ExpandableMenu from '../main/component/ExpandableMenu';
 
 export default function Home({navigation}: HomeScreenNavigationProp) {
   return (
@@ -14,9 +17,10 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
       <Button
         title="go to list"
         onPress={() => {
-          navigation.navigate('List');
+          navigation.navigate('List', {id: 'test'});
         }}
       />
+      <ExpandableMenu />
     </View>
   );
 }
