@@ -1,14 +1,17 @@
 import {Pressable, StyleSheet, Text, View} from 'react-native';
 import colors from '../styles/colors';
 import fontSize from '../styles/fontSize';
+import spacing from '../styles/spacing';
 
 type Props = {
   onPress: () => void;
+  label?: string;
 };
 
-const AddButton = ({onPress}: Props) => {
+const AddButton = ({onPress, label}: Props) => {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <Pressable style={styles.button} onPress={onPress
+}>
       <Text style={styles.text}>+</Text>
     </Pressable>
   );
@@ -22,6 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 360,
+    marginBottom:spacing.sm,
   },
 
   text: {
