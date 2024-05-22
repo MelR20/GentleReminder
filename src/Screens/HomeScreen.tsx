@@ -17,11 +17,6 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
           navigation.navigate('List');
         }}
       />
-      <AddButton
-        onPress={() => {
-          navigation.navigate('AddList');
-        }}
-      />
     </View>
   );
 }

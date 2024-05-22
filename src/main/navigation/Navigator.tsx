@@ -6,6 +6,7 @@ import HomeScreen from '../../Screens/HomeScreen';
 import ListScreen from '../../Screens/ListScreen';
 import colors from '../styles/colors';
 import AddListScreen from '../../Screens/AddListScreen';
+import AddButton from '../component/AddButton';
 
 type RootStackParamList = {
   Home: undefined;
@@ -25,7 +26,9 @@ export default function Navigator() {
         headerTintColor: colors.main,
         //headerBackTitleStyle: fontFamily,
       }}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} options={({navigation})=>({headerRight: ()=>(<AddButton onPress={() => {
+          navigation.navigate('AddList');
+        }}/>)})}/>
       <Stack.Screen name="List" component={ListScreen} />
       <Stack.Screen name="AddList" component={AddListScreen} />
     </Stack.Navigator>
