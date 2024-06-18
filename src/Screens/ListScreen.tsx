@@ -2,6 +2,7 @@ import {Button, StyleSheet, View} from 'react-native';
 import {ListScreenNavigationProp} from '../main/navigation/Navigator';
 import colors from '../main/styles/colors';
 import spacing from '../main/styles/spacing';
+import BackButton from '../main/component/BackButton';
 
 export default function ListScreen({
   navigation,
@@ -10,7 +11,7 @@ export default function ListScreen({
   route.params.id;
   return (
     <View style={styles.container}>
-      <Button title=" go Back " onPress={() => navigation.goBack()} />
+      <BackButton onPress={() => navigation.goBack()}/>
     </View>
   );
 }

@@ -22,16 +22,11 @@ export default function Navigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerTitle: '',
-        headerTransparent: true,
-        headerBackTitle: 'Back',
-        headerTintColor: colors.main,
-        //headerBackTitleStyle: fontFamily,
+        headerShown:false
       }}>
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={() => ({headerRight: () => <ExpandableMenu />})}
       />
       <Stack.Screen name="List" component={ListScreen} />
       <Stack.Screen name="AddList" component={AddListScreen} />
