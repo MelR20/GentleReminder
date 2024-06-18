@@ -13,6 +13,7 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Title label="Gentle Reminder" />
+        <ExpandableMenu />
       </View>
       <Button
         title="go to list"
@@ -20,7 +21,7 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
           navigation.navigate('List', {id: 'test'});
         }}
       />
-      <ExpandableMenu />
+      
     </View>
   );
 }
@@ -29,13 +30,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    paddingLeft: spacing.md,
-    paddingRight: spacing.md,
-    alignItems: 'center',
+    paddingLeft: spacing.xs,
+    paddingRight: spacing.xs,
+
   },
   titleContainer: {
-    margin: spacing.md,
-    paddingTop: spacing.xl,
-    justifyContent: 'center',
+    paddingTop: spacing.lg,
+    margin: spacing.sm,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

@@ -1,4 +1,4 @@
-import {Button, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {ListScreenNavigationProp} from '../main/navigation/Navigator';
 import colors from '../main/styles/colors';
 import spacing from '../main/styles/spacing';

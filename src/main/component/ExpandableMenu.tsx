@@ -56,11 +56,13 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 360,
+    borderRadius: 180,
   },
   menu: {
-    top: spacing.md,
     alignItems: 'flex-end',
+    top: spacing.md,
+    position:'absolute',
+    marginTop: spacing.xxl
   },
   itemContainer: {
     flexDirection: 'row',
