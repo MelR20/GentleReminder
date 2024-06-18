@@ -1,20 +1,20 @@
-import { Pressable, StyleSheet, Text } from "react-native";
-import colors from "../styles/colors";
-import spacing from "../styles/spacing";
-import fontSize from "../styles/fontSize";
+import {Pressable, StyleSheet, Text, View} from 'react-native';
+import colors from '../styles/colors';
+import spacing from '../styles/spacing';
+import fontSize from '../styles/fontSize';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackNavigationProp } from '../navigation/Navigator';
 
-
-type Props = {
-    onPress: () => void;
-  };
-
-const BackButton = ({onPress}:Props) => {
-    return(
-        <Pressable style={styles.button} onPress={onPress}>
-            <Text style={styles.text}>Back</Text>
-        </Pressable>
-    )
-}
+const BackButton = () => {
+  const navigation = useNavigation<RootStackNavigationProp>()
+  return (
+    <View style={styles.container}>
+      <Pressable style={styles.button} onPress={()=> navigation.goBack()}>
+        <Text style={styles.text}>Back</Text>
+      </Pressable>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   button: {
@@ -24,13 +24,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 20,
-    marginBottom:spacing.sm,
+    marginBottom: spacing.sm,
   },
 
   text: {
     color: colors.textDark,
     fontSize: fontSize.regular,
   },
-}); 
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+    paddingTop: spacing.xxl,
+    paddingLeft: spacing.md,
+    paddingRight: spacing.md,
+  },
+});
 
 export default BackButton;

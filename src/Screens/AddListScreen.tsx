@@ -3,10 +3,12 @@ import Title from '../main/component/Title';
 import {AddListScreenNavigationProp} from '../main/navigation/Navigator';
 import colors from '../main/styles/colors';
 import spacing from '../main/styles/spacing';
+import BackButton from '../main/component/BackButton';
 
 export default function AddListScreen({navigation}: AddListScreenNavigationProp) {
   return (
     <View style={styles.container}>
+       <BackButton/>
       <Title label="This is the add screen" />
     </View>
   );

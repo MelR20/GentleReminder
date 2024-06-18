@@ -10,18 +10,11 @@ export default function ListScreen({
 }: ListScreenNavigationProp) {
   route.params.id;
   return (
-    <View style={styles.container}>
-      <BackButton onPress={() => navigation.goBack()}/>
-    </View>
+      <BackButton/>
+
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    paddingTop: spacing.xxl,
-    paddingLeft: spacing.md,
-    paddingRight: spacing.md,
-  },
+
 });

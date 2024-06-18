@@ -15,7 +15,7 @@ type Props = {};
 const options = ['new item', 'list'];
 
 const ExpandableMenu = ({}: Props) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const navigation = useNavigation<RootStackNavigationProp>();
   return (
     <View style={styles.container}>
@@ -28,17 +28,18 @@ const ExpandableMenu = ({}: Props) => {
             <Text style={styles.label}>Label</Text>
             <AddButton
               onPress={() => {
+                setOpen(!open);
                 navigation.navigate('AddList');
               }}
             />
           </View>
           <Pressable style={styles.itemContainer}>
             <Text style={styles.label}>Label</Text>
-            <AddButton onPress={() => console.log('yoyo')} />
+            <AddButton onPress={() => setOpen(!open)} />
           </Pressable>
           <View style={styles.itemContainer}>
             <Text style={styles.label}>Label</Text>
-            <AddButton onPress={() => console.log('yoyo2')} />
+            <AddButton onPress={() => setOpen(!open)} />
           </View>
         </View>
       )}

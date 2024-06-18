@@ -15,12 +15,12 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
         <Title label="Gentle Reminder" />
         <ExpandableMenu />
       </View>
-      <Button
+      {/* <Button
         title="go to list"
         onPress={() => {
           navigation.navigate('List', {id: 'test'});
         }}
-      />
+      /> */}
       
     </View>
   );
