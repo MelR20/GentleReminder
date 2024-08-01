@@ -4,8 +4,6 @@ import {useState} from 'react';
 import AddButton from './AddButton';
 import spacing from '../styles/spacing';
 import {
-  AddListScreenNavigationProp,
-  HomeScreenNavigationProp,
   RootStackNavigationProp,
 } from '../navigation/Navigator';
 import {useNavigation} from '@react-navigation/native';
@@ -25,7 +23,7 @@ const ExpandableMenu = ({}: Props) => {
       {open && (
         <View style={styles.menu}>
           <View style={styles.itemContainer}>
-            <Text style={styles.label}>Label</Text>
+            <Text style={styles.label}>New List</Text>
             <AddButton
               onPress={() => {
                 setOpen(!open);
@@ -34,11 +32,11 @@ const ExpandableMenu = ({}: Props) => {
             />
           </View>
           <Pressable style={styles.itemContainer}>
-            <Text style={styles.label}>Label</Text>
+            <Text style={styles.label}>Edit Lists</Text>
             <AddButton onPress={() => setOpen(!open)} />
           </Pressable>
           <View style={styles.itemContainer}>
-            <Text style={styles.label}>Label</Text>
+            <Text style={styles.label}>Settings</Text>
             <AddButton onPress={() => setOpen(!open)} />
           </View>
         </View>
