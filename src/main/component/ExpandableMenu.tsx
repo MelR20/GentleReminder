@@ -3,14 +3,12 @@ import colors from '../styles/colors';
 import {useState} from 'react';
 import AddButton from './AddButton';
 import spacing from '../styles/spacing';
-import {
-  RootStackNavigationProp,
-} from '../navigation/Navigator';
+import {RootStackNavigationProp} from '../navigation/Navigator';
 import {useNavigation} from '@react-navigation/native';
 
 type Props = {};
 
-const options = ['new item', 'list'];
+const options = ['new item', 'Collection'];
 
 const ExpandableMenu = ({}: Props) => {
   const [open, setOpen] = useState(false);
@@ -23,16 +21,16 @@ const ExpandableMenu = ({}: Props) => {
       {open && (
         <View style={styles.menu}>
           <View style={styles.itemContainer}>
-            <Text style={styles.label}>New List</Text>
+            <Text style={styles.label}>New Collection</Text>
             <AddButton
               onPress={() => {
                 setOpen(!open);
-                navigation.navigate('AddList');
+                navigation.navigate('AddCollection');
               }}
             />
           </View>
           <Pressable style={styles.itemContainer}>
-            <Text style={styles.label}>Edit Lists</Text>
+            <Text style={styles.label}>Edit Collections</Text>
             <AddButton onPress={() => setOpen(!open)} />
           </Pressable>
           <View style={styles.itemContainer}>
@@ -60,8 +58,8 @@ const styles = StyleSheet.create({
   menu: {
     alignItems: 'flex-end',
     top: spacing.md,
-    position:'absolute',
-    marginTop: spacing.xxl
+    position: 'absolute',
+    marginTop: spacing.xxl,
   },
   itemContainer: {
     flexDirection: 'row',

@@ -1,4 +1,4 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, Pressable, StyleSheet, Text, View} from 'react-native';
 import {
   HomeScreenNavigationProp,
   RootStackNavigationProp,
@@ -10,10 +10,10 @@ import ExpandableMenu from '../main/component/ExpandableMenu';
 
 import {useContext} from 'react';
 
-import {ListContext} from '../main/Contexts/ListContext';
+import {CollectionContext} from '../main/Contexts/CollectionContext';
 
 export default function Home({navigation}: HomeScreenNavigationProp) {
-  const {collections, setCollections} = useContext(ListContext);
+  const {collections, setCollections} = useContext(CollectionContext);
 
   return (
     <View style={styles.container}>
@@ -25,7 +25,9 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
       <View>
         {collections.map(collection => (
           <View>
-            <Text>{collection.label}</Text>
+            <Pressable>
+              <Text>{collection.label}</Text>
+            </Pressable>
             <View style={{marginLeft: 8}}>
               {collection.reminders.map(reminder => (
                 <Text>{reminder.label}</Text>
@@ -34,7 +36,6 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
           </View>
         ))}
       </View>
-
     </View>
   );
 }

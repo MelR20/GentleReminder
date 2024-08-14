@@ -1,11 +1,11 @@
 import {StyleSheet, View} from 'react-native';
 import Title from '../main/component/Title';
-import {AddListScreenNavigationProp} from '../main/navigation/Navigator';
+import {AddCollectionScreenNavigationProp} from '../main/navigation/Navigator';
 import colors from '../main/styles/colors';
 import spacing from '../main/styles/spacing';
 import BackButton from '../main/component/BackButton';
 
-export default function AddListScreen({navigation}: AddListScreenNavigationProp) {
+export default function AddCollectionScreen({navigation}: AddCollectionScreenNavigationProp) {
   return (
     <View style={styles.container}>
        <BackButton/>

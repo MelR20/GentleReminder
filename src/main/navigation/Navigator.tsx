@@ -4,49 +4,46 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import HomeScreen from '../../Screens/HomeScreen';
-import ListScreen from '../../Screens/ListScreen';
+import CollectionScreen from '../../Screens/CollectionScreen';
 import colors from '../styles/colors';
-import AddListScreen from '../../Screens/AddListScreen';
+import AddCollectionScreen from '../../Screens/AddCollectionScreen';
 import AddButton from '../component/AddButton';
 import ExpandableMenu from '../component/ExpandableMenu';
 
-type RootStackParamList = {
+type RootStackParamCollection = {
   Home: undefined;
-  List: {id: string};
-  AddList: undefined;
+  Collection: {id: string};
+  AddCollection: undefined;
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+const Stack = createNativeStackNavigator<RootStackParamCollection>();
 
 export default function Navigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown:false
+        headerShown: false,
       }}>
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
-      />
-      <Stack.Screen name="List" component={ListScreen} />
-      <Stack.Screen name="AddList" component={AddListScreen} />
+      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Collection" component={CollectionScreen} />
+      <Stack.Screen name="AddCollection" component={AddCollectionScreen} />
     </Stack.Navigator>
   );
 }
 export type RootStackNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
+  RootStackParamCollection,
   any
 >;
 
 export type HomeScreenNavigationProp = NativeStackScreenProps<
-  RootStackParamList,
+  RootStackParamCollection,
   'Home'
 >;
-export type ListScreenNavigationProp = NativeStackScreenProps<
-  RootStackParamList,
-  'List'
+export type CollectionScreenNavigationProp = NativeStackScreenProps<
+  RootStackParamCollection,
+  'Collection'
 >;
-export type AddListScreenNavigationProp = NativeStackScreenProps<
-  RootStackParamList,
-  'AddList'
+export type AddCollectionScreenNavigationProp = NativeStackScreenProps<
+  RootStackParamCollection,
+  'AddCollection'
 >;
