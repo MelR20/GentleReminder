@@ -7,7 +7,9 @@ import colors from '../main/styles/colors';
 import Title from '../main/component/Title';
 import spacing from '../main/styles/spacing';
 import ExpandableMenu from '../main/component/ExpandableMenu';
+
 import {useContext} from 'react';
+
 import {ListContext} from '../main/Contexts/ListContext';
 
 export default function Home({navigation}: HomeScreenNavigationProp) {
@@ -19,6 +21,7 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
         <Title label="Gentle Reminder" />
         <ExpandableMenu />
       </View>
+
       <View>
         {collections.map(collection => (
           <View>
@@ -31,6 +34,7 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
           </View>
         ))}
       </View>
+
     </View>
   );
 }
