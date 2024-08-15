@@ -12,7 +12,7 @@ import ExpandableMenu from '../component/ExpandableMenu';
 
 type RootStackParamCollection = {
   Home: undefined;
-  Collection: {id: string};
+  Collection: {id: number};
   AddCollection: undefined;
 };
 

@@ -12,7 +12,8 @@ import CollectionContextProvider, {
 
 export default function App() {
   return (
-    <SafeAreaView style={{flex: 1}}>
+    //todo: fixe safeArea and remove top padding
+    <SafeAreaView style={{paddingTop: 20,flex: 1}}> 
       <CollectionContextProvider>
         <NavigationContainer>
           <Navigator />

@@ -11,10 +11,11 @@ import ExpandableMenu from '../main/component/ExpandableMenu';
 import {useContext} from 'react';
 
 import {CollectionContext} from '../main/Contexts/CollectionContext';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Home({navigation}: HomeScreenNavigationProp) {
+export default function Home() {
   const {collections, setCollections} = useContext(CollectionContext);
-
+  const navigation = useNavigation<RootStackNavigationProp>();
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -25,7 +26,7 @@ export default function Home({navigation}: HomeScreenNavigationProp) {
       <View>
         {collections.map(collection => (
           <View>
-            <Pressable>
+            <Pressable onPress={()=>{console.log(collection.id); navigation.navigate('Collection', {id: collection.id})}}>
               <Text>{collection.label}</Text>
             </Pressable>
             <View style={{marginLeft: 8}}>
