@@ -21,8 +21,9 @@ export default function CollectionScreen({
     <View>
       <BackButton />
       <Text>{collection?.label}</Text>
-      {collection?.reminders.map(reminder=>(<Text key={reminder.id}>{reminder.label}</Text>))}
       <AddButton onPress={()=>{console.log("ouvrir la modale d'ajout")}} label='New Reminder' />
+      
+      {collection?.reminders.map(reminder=>(<Text key={reminder.id}>{reminder.label}</Text>))}
     </View>
   );
 }

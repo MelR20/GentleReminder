@@ -6,14 +6,15 @@ import spacing from '../styles/spacing';
 type Props = {
   onPress: () => void;
   label?: string;
+  icon?: string;
 };
 
-const AddButton = ({onPress, label}: Props) => {
+const AddButton = ({onPress, label, icon="+"}: Props) => {
   return (
     <View style={styles.itemContainer}>
       <Text style={styles.label}>{label}</Text>
       <Pressable style={styles.button} onPress={onPress}>
-        <Text style={styles.buttonText}>+</Text>
+        <Text style={styles.buttonText}>{icon}</Text>
       </Pressable>
     </View>
   );

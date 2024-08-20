@@ -6,9 +6,17 @@ import spacing from '../styles/spacing';
 import {RootStackNavigationProp} from '../navigation/Navigator';
 import {useNavigation} from '@react-navigation/native';
 
-type Props = {};
+type Props = {
+  options?: MenuActions[];
+};
 
-const ExpandableMenu = ({}: Props) => {
+export type MenuActions = {
+  label?: string;
+  onPress: () => void;
+  icon?: string;
+};
+
+const ExpandableMenu = ({options}: Props) => {
   const [open, setOpen] = useState(false);
   const navigation = useNavigation<RootStackNavigationProp>();
   return (
@@ -18,15 +26,18 @@ const ExpandableMenu = ({}: Props) => {
       </Pressable>
       {open && (
         <View style={styles.menu}>
-          <AddButton
-            onPress={() => {
-              setOpen(!open);
-              navigation.navigate('AddCollection');
-            }}
-            label="New Collection"
-          />
-          <AddButton onPress={() => setOpen(!open)} label ="Edit Collection"/>
-          <AddButton onPress={() => setOpen(!open)} label="Settings"/>
+          {options?.map(option => {
+            return (
+              <AddButton
+                onPress={() => {
+                  setOpen(!open);
+                  option.onPress();
+                }}
+                label={option.label}
+                icon={option.icon}
+              />
+            );
+          })}
         </View>
       )}
     </View>
