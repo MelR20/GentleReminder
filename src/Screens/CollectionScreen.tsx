@@ -19,7 +19,8 @@ export default function CollectionScreen({
   return (
     <View>
       <BackButton />
-      <Text>{JSON.stringify(collection)}</Text>
+      <Text>{collection?.label}</Text>
+      {collection?.reminders.map(reminder=>(<Text key={reminder.id}>{reminder.label}</Text>))}
     </View>
   );
 }

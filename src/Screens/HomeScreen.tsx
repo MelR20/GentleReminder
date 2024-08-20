@@ -1,6 +1,5 @@
-import {Button, Pressable, StyleSheet, Text, View} from 'react-native';
+import { Pressable, StyleSheet, Text, View} from 'react-native';
 import {
-  HomeScreenNavigationProp,
   RootStackNavigationProp,
 } from '../main/navigation/Navigator';
 import colors from '../main/styles/colors';
@@ -25,13 +24,13 @@ export default function Home() {
 
       <View>
         {collections.map(collection => (
-          <View>
-            <Pressable onPress={()=>{console.log(collection.id); navigation.navigate('Collection', {id: collection.id})}}>
+          <View key={collection.id}>
+            <Pressable onPress={()=>{navigation.navigate('Collection', {id: collection.id})}}>
               <Text>{collection.label}</Text>
             </Pressable>
             <View style={{marginLeft: 8}}>
               {collection.reminders.map(reminder => (
-                <Text>{reminder.label}</Text>
+                <Text key={reminder.id}>{reminder.label}</Text>
               ))}
             </View>
           </View>

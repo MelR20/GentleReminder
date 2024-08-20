@@ -37,6 +37,18 @@ const collectionsTest: Collection[] = [
         startDate: new Date(),
         expirationDate: new Date(),
       },
+      {
+        id: 2,
+        label: 'Patate',
+        startDate: new Date(),
+        expirationDate: new Date(),
+      },
+      {
+        id: 3,
+        label: 'Patater',
+        startDate: new Date(),
+        expirationDate: new Date(),
+      },
     ],
   },
   {
