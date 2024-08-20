@@ -5,6 +5,7 @@ import spacing from '../main/styles/spacing';
 import BackButton from '../main/component/BackButton';
 import {useContext} from 'react';
 import {CollectionContext} from '../main/Contexts/CollectionContext';
+import AddButton from '../main/component/AddButton';
 
 export default function CollectionScreen({
   navigation,
@@ -21,6 +22,7 @@ export default function CollectionScreen({
       <BackButton />
       <Text>{collection?.label}</Text>
       {collection?.reminders.map(reminder=>(<Text key={reminder.id}>{reminder.label}</Text>))}
+      <AddButton onPress={()=>{console.log("ouvrir la modale d'ajout")}} label='New Reminder' />
     </View>
   );
 }

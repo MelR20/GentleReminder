@@ -10,10 +10,12 @@ type Props = {
 
 const AddButton = ({onPress, label}: Props) => {
   return (
-    <Pressable style={styles.button} onPress={onPress
-}>
-      <Text style={styles.text}>+</Text>
-    </Pressable>
+    <View style={styles.itemContainer}>
+      <Text style={styles.label}>{label}</Text>
+      <Pressable style={styles.button} onPress={onPress}>
+        <Text style={styles.buttonText}>+</Text>
+      </Pressable>
+    </View>
   );
 };
 
@@ -28,9 +30,21 @@ const styles = StyleSheet.create({
     marginBottom:spacing.sm,
   },
 
-  text: {
+  buttonText: {
     color: colors.background,
     fontSize: fontSize.extralarge,
+  },
+
+  label: {
+    marginRight: spacing.sm,
+    color: colors.textDark,
+    paddingLeft: spacing.xs,
+    paddingRight: spacing.xs,
+  },
+
+  itemContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 

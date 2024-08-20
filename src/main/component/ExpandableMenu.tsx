@@ -8,8 +8,6 @@ import {useNavigation} from '@react-navigation/native';
 
 type Props = {};
 
-const options = ['new item', 'Collection'];
-
 const ExpandableMenu = ({}: Props) => {
   const [open, setOpen] = useState(false);
   const navigation = useNavigation<RootStackNavigationProp>();
@@ -20,23 +18,15 @@ const ExpandableMenu = ({}: Props) => {
       </Pressable>
       {open && (
         <View style={styles.menu}>
-          <View style={styles.itemContainer}>
-            <Text style={styles.label}>New Collection</Text>
-            <AddButton
-              onPress={() => {
-                setOpen(!open);
-                navigation.navigate('AddCollection');
-              }}
-            />
-          </View>
-          <Pressable style={styles.itemContainer}>
-            <Text style={styles.label}>Edit Collections</Text>
-            <AddButton onPress={() => setOpen(!open)} />
-          </Pressable>
-          <View style={styles.itemContainer}>
-            <Text style={styles.label}>Settings</Text>
-            <AddButton onPress={() => setOpen(!open)} />
-          </View>
+          <AddButton
+            onPress={() => {
+              setOpen(!open);
+              navigation.navigate('AddCollection');
+            }}
+            label="New Collection"
+          />
+          <AddButton onPress={() => setOpen(!open)} label ="Edit Collection"/>
+          <AddButton onPress={() => setOpen(!open)} label="Settings"/>
         </View>
       )}
     </View>
@@ -60,16 +50,6 @@ const styles = StyleSheet.create({
     top: spacing.md,
     position: 'absolute',
     marginTop: spacing.xxl,
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  label: {
-    marginRight: spacing.sm,
-    color: colors.textDark,
-    paddingLeft: spacing.xs,
-    paddingRight: spacing.xs,
   },
 });
 
