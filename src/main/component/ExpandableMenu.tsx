@@ -7,7 +7,7 @@ import {RootStackNavigationProp} from '../navigation/Navigator';
 import {useNavigation} from '@react-navigation/native';
 
 type Props = {
-  options?: MenuActions[];
+  options: MenuActions[];
 };
 
 export type MenuActions = {

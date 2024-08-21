@@ -6,6 +6,7 @@ import BackButton from '../main/component/BackButton';
 import {useContext} from 'react';
 import {CollectionContext} from '../main/Contexts/CollectionContext';
 import AddButton from '../main/component/AddButton';
+import Title from '../main/component/Title';
 
 export default function CollectionScreen({
   navigation,
@@ -16,16 +17,31 @@ export default function CollectionScreen({
   const collection = collections.find(
     collection => collection.id === route.params.id,
   );
+  if (collection) {
+    return (
+      <View>
+        <BackButton />
+        <Title label={collection?.label} />
+        <AddButton
+          onPress={() => {
+            console.log("ouvrir la modale d'ajout");
+          }}
+          label="New Reminder"
+        />
 
-  return (
+        {collection?.reminders.map(reminder => (
+          <Text key={reminder.id}>{reminder.label}</Text>
+        ))}
+      </View>
+    );
+  } else {
+    return (
     <View>
       <BackButton />
-      <Text>{collection?.label}</Text>
-      <AddButton onPress={()=>{console.log("ouvrir la modale d'ajout")}} label='New Reminder' />
-      
-      {collection?.reminders.map(reminder=>(<Text key={reminder.id}>{reminder.label}</Text>))}
+      <Text>Oups, no collection found</Text>;
     </View>
-  );
+    )
+  }
 }
 
 const styles = StyleSheet.create({});
