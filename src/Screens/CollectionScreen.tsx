@@ -1,10 +1,17 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from 'react-native';
 import {CollectionScreenNavigationProp} from '../main/navigation/Navigator';
 import colors from '../main/styles/colors';
 import spacing from '../main/styles/spacing';
 import BackButton from '../main/component/BackButton';
-import {useContext} from 'react';
-import {CollectionContext} from '../main/Contexts/CollectionContext';
+import {useContext, useState} from 'react';
+import {CollectionContext, Reminder} from '../main/Contexts/CollectionContext';
 import AddButton from '../main/component/AddButton';
 import Title from '../main/component/Title';
 
@@ -17,17 +24,49 @@ export default function CollectionScreen({
   const collection = collections.find(
     collection => collection.id === route.params.id,
   );
+  const [addReminderVisible, setaddReminderVisible] = useState(false);
+  const [reminderText, onChangeReminderText] = useState('');
+
+  function save(){
+    if (reminderText!=''){
+    const newReminder: Reminder = {
+      id:collection.reminders.length +1, 
+      label: reminderText,
+      startDate: new Date(),
+      expirationDate: new Date()
+    }
+    collection?.reminders.push(newReminder);
+    console.log(collection.reminders)
+    onChangeReminderText('')
+    }
+  }
+  
   if (collection) {
     return (
       <View>
         <BackButton />
         <Title label={collection?.label} />
-        <AddButton
-          onPress={() => {
-            console.log("ouvrir la modale d'ajout");
-          }}
-          label="New Reminder"
-        />
+        <View >
+          {addReminderVisible && (
+            <View style={styles.addContainer}>
+              <TextInput
+                style={styles.textInput}
+                placeholder="Insert new reminder"
+                onChangeText={onChangeReminderText}
+                onSubmitEditing={()=> save()}
+                value={reminderText}
+              />
+              <AddButton onPress={() => save()} icon="S" />
+            </View>
+          )}
+
+          <AddButton
+            onPress={() => {
+              setaddReminderVisible(!addReminderVisible);
+            }}
+            label="New Reminder"
+          />
+        </View>
 
         {collection?.reminders.map(reminder => (
           <Text key={reminder.id}>{reminder.label}</Text>
@@ -36,12 +75,26 @@ export default function CollectionScreen({
     );
   } else {
     return (
-    <View>
-      <BackButton />
-      <Text>Oups, no collection found</Text>;
-    </View>
-    )
+      <View>
+        <BackButton />
+        <Text>Oups, no collection found</Text>;
+      </View>
+    );
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  addContainer: {
+    borderRadius: 20,
+    // backgroundColor: colors.secondary,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  textInput: {
+    flex: 1,
+    height: spacing.xl,
+    backgroundColor: colors.accent,
+    borderRadius: 20,
+    padding: spacing.sm,
+  },
+});
