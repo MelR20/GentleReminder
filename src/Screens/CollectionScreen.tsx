@@ -40,7 +40,7 @@ export default function CollectionScreen({
     onChangeReminderText('')
     }
   }
-  
+
   if (collection) {
     return (
       <View>
@@ -57,6 +57,10 @@ export default function CollectionScreen({
                 value={reminderText}
               />
               <AddButton onPress={() => save()} icon="S" />
+              <AddButton 
+                onPress={()=> {onChangeReminderText(''); setaddReminderVisible(!addReminderVisible)}}
+                icon='X'
+              />
             </View>
           )}
 
