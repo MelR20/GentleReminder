@@ -11,9 +11,10 @@ import colors from '../main/styles/colors';
 import spacing from '../main/styles/spacing';
 import BackButton from '../main/component/BackButton';
 import {useContext, useState} from 'react';
-import {CollectionContext, Reminder} from '../main/Contexts/CollectionContext';
+import {CollectionContext} from '../main/Contexts/CollectionContext';
 import AddButton from '../main/component/AddButton';
 import Title from '../main/component/Title';
+import ReminderItem, { Reminder } from '../main/component/ReminderItem';
 
 export default function CollectionScreen({
   navigation,
@@ -27,39 +28,41 @@ export default function CollectionScreen({
   const [addReminderVisible, setaddReminderVisible] = useState(false);
   const [reminderText, onChangeReminderText] = useState('');
 
-  function save(){
-    if (reminderText!=''){
-    const newReminder: Reminder = {
-      id:collection.reminders.length +1, 
-      label: reminderText,
-      startDate: new Date(),
-      expirationDate: new Date()
+  const save = () => {
+    if (reminderText != '') {
+      const newReminder: Reminder = {
+        id: collection!.reminders.length + 1,
+        label: reminderText,
+        startDate: new Date(),
+        expirationDate: new Date(),
+      };
+      collection?.reminders.push(newReminder);
+      onChangeReminderText('');
     }
-    collection?.reminders.push(newReminder);
-    console.log(collection.reminders)
-    onChangeReminderText('')
-    }
-  }
+  };
 
   if (collection) {
     return (
       <View>
         <BackButton />
         <Title label={collection?.label} />
-        <View >
+        <View>
           {addReminderVisible && (
             <View style={styles.addContainer}>
               <TextInput
                 style={styles.textInput}
                 placeholder="Insert new reminder"
                 onChangeText={onChangeReminderText}
-                onSubmitEditing={()=> save()}
+                onSubmitEditing={() => save()}
                 value={reminderText}
               />
               <AddButton onPress={() => save()} icon="S" />
-              <AddButton 
-                onPress={()=> {onChangeReminderText(''); setaddReminderVisible(!addReminderVisible)}}
-                icon='X'
+              <AddButton
+                onPress={() => {
+                  onChangeReminderText('');
+                  setaddReminderVisible(!addReminderVisible);
+                }}
+                icon="X"
               />
             </View>
           )}
@@ -73,7 +76,8 @@ export default function CollectionScreen({
         </View>
 
         {collection?.reminders.map(reminder => (
-          <Text key={reminder.id}>{reminder.label}</Text>
+          // <Text key={reminder.id}>{reminder.label}</Text>
+          <ReminderItem{...reminder} />
         ))}
       </View>
     );

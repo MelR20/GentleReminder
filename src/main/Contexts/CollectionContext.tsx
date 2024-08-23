@@ -1,11 +1,5 @@
 import {createContext, ReactNode, useContext, useState} from 'react';
-
-export type Reminder = {
-  id: number;
-  label: string;
-  startDate: Date;
-  expirationDate: Date;
-};
+import {Reminder} from '../component/ReminderItem';
 
 export type Collection = {
   id: number;
